@@ -1,8 +1,0 @@
-<% story.forEach(function(elem){ %>
-          <div class="novel-item">
-            <img src="/images/uploads/<%= elem.cover %>" alt="Novel Cover" width="300" height="200">
-            <h2><%= elem.title %></h2>
-            <p><%= elem.theme %></p>
-            <a href="/stories/<%=elem.title%>">read</a>
-          </div>
-        <% }); %>
