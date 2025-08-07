@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Story Creator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded-2xl shadow-lg max-w-md w-full">
+    <h1 class="text-2xl font-bold mb-6 text-center">Create a Story</h1>
+    
+    <!-- Form Starts Here -->
+    <form action="/updatestory" method="POST" enctype="multipart/form-data">
+      
+        <label for="story">Choose a story:</label>
+      <input list="stories" id="story" name="story" placeholder="Select">
+      <datalist id="stories">
+        <% user.stories.forEach(function(stories){ %>
+          <option value="<%=stories.title%>">
+            <%})%>
+      </datalist>
+
+      <!-- Story Title Input -->
+      <label for="file-upload" class="custom-file-upload">
+          📷 Choose Photo
+        </label><input id="file-upload" type="file" accept="image/*" name="image" placeholder="cover pic" />
+     
+      <!-- Theme Selector -->
+        <div>
+      <label for="story-title" class="block text-gray-700 mb-2">Story Title</label>
+        <input type="text" id="story-title" name="storyTitle" placeholder="Enter your story title"
+               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+      </div>
+
+       <div>
+        <label for="story-title" class="block text-gray-700 mb-2">theme</label>
+        <input type="text" id="story-title" name="Theme" placeholder="Enter your Theme"
+               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+      </div>
+
+      
+      <!-- Submit Button -->
+      <div>
+        <button type="submit"
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition">
+          save changes
+        </button>
+      </div>
+
+    </form>
+    <script>
+      const input = document.getElementById("story");
+      const datalist = document.getElementById("stories");
+
+      input.addEventListener("input", () => {
+        const allowed = Array.from(datalist.options).map(opt => opt.value);
+        if (!allowed.includes(input.value)) {
+          input.setCustomValidity("Please choose from the list");
+        } else {
+          input.setCustomValidity("");
+        }
+      });
+    </script>
+    <!-- Form Ends Here -->
+  </div>
+</body>
+</html>

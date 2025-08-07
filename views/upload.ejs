@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upload PDF</title>
+  <link rel="stylesheet" href="/stylesheets/upload.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Upload a PDF</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required>
+
+      <label for="story">Choose a story:</label>
+      <input list="stories" id="story" name="story" placeholder="Select">
+      <datalist id="stories">
+        <% user.stories.forEach(function(stories){ %>
+          <option value="<%=stories.title%>">
+            <%})%>
+      </datalist>
+      <label for="pdf">Choose a PDF file:</label>
+      <input type="file" id="pdf" name="pdf" accept="application/pdf" required>
+
+      <button type="submit">Upload PDF</button>
+    </form>
+
+    <script>
+      const input = document.getElementById("story");
+      const datalist = document.getElementById("stories");
+
+      input.addEventListener("input", () => {
+        const allowed = Array.from(datalist.options).map(opt => opt.value);
+        if (!allowed.includes(input.value)) {
+          input.setCustomValidity("Please choose from the list");
+        } else {
+          input.setCustomValidity("");
+        }
+      });
+    </script>
+  </div>
+</body>
+
+</html>

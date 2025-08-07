@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact the Storytellers - Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600&display=swap');
+        
+        .story-font {
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .title-font {
+            font-family: 'Cinzel', serif;
+        }
+        
+        .floating-book {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .magical-glow {
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
+        }
+        
+        .parchment {
+            background: linear-gradient(45deg, #f7f3e9, #f0ead6);
+            border: 2px solid #d4af37;
+            transform: perspective(1000px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .demo-badge {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 story-font">
+    <!-- Floating magical elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="floating-book absolute top-20 left-10 text-4xl">📚</div>
+        <div class="floating-book absolute top-40 right-20 text-3xl" style="animation-delay: -1s;">✨</div>
+        <div class="floating-book absolute bottom-32 left-1/4 text-3xl" style="animation-delay: -2s;">🪶</div>
+        <div class="floating-book absolute top-1/3 right-1/3 text-2xl" style="animation-delay: -0.5s;">🌟</div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-12">
+
+
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="title-font text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-300 to-purple-300 mb-4">
+                Contact the Storytellers
+            </h1>
+            <p class="text-xl text-purple-200 max-w-2xl mx-auto leading-relaxed">
+                Have a tale to tell? A story to share? Or perhaps you seek guidance from our guild of wordsmiths? 
+                Send us your message through the enchanted parchment below.
+            </p>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="max-w-2xl mx-auto">
+            <div class="parchment rounded-lg p-8 magical-glow">
+                <form id="contactForm" class="space-y-6">
+                    <!-- Name Field -->
+                    <div>
+                        <label for="name" class="block text-lg font-semibold text-amber-800 mb-2">
+                            🏷️ Your Name (or Pen Name)
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            required
+                            class="w-full px-4 py-3 border-2 border-amber-600 rounded-lg focus:border-purple-600 focus:ring-2 focus:ring-purple-300 transition-all duration-300 bg-white/90 shadow-md hover:shadow-lg focus:shadow-xl"
+                            placeholder="Enter your name..."
+                        >
+                    </div>
+
+<!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-lg font-semibold text-amber-800 mb-2">
+                            📧 Email Address
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required
+                            class="w-full px-4 py-3 border-2 border-amber-600 rounded-lg focus:border-purple-600 focus:ring-2 focus:ring-purple-300 transition-all duration-300 bg-white/90 shadow-md hover:shadow-lg focus:shadow-xl"
+                            placeholder="your.email@realm.com"
+                        >
+                    </div>
+
+
+
+                    <!-- Message Field -->
+                    <div>
+                        <label for="message" class="block text-lg font-semibold text-amber-800 mb-2">
+                            📜 Your Message or Story Idea
+                        </label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            rows="6" 
+                            required
+                            class="w-full px-4 py-3 border-2 border-amber-600 rounded-lg focus:border-purple-600 focus:ring-2 focus:ring-purple-300 transition-all duration-300 bg-white/90 resize-none shadow-md hover:shadow-lg focus:shadow-xl"
+                            placeholder="Once upon a time... or tell us what's on your mind!"
+                        ></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button 
+                            type="submit" 
+                            class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:translateY(-2px) magical-glow shadow-lg hover:shadow-2xl"
+                            style="box-shadow: 0 8px 15px rgba(147, 51, 234, 0.4);"
+                        >
+                            🪄 Send Your Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Show success message
+            const button = e.target.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '✨ Message Sent to the Realm!';
+            button.classList.add('bg-green-600');
+            button.disabled = true;
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('bg-green-600');
+                button.disabled = false;
+                e.target.reset();
+                
+                // Show a magical confirmation
+                alert("Thank you, ${name}! Your message has been received by our guild of storytellers. We'll respond to your email at ${email} soon! 📚✨");
+            }, 3000);
+        });
+        
+        // Add some interactive magic to form fields
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+
+
+input.addEventListener('focus', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.boxShadow = '0 0 15px rgba(147, 51, 234, 0.4)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.style.transform = 'scale(1)';
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocumenta.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9696d427458e4049',t:'MTc1NDIzNDczOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechangefunction();document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

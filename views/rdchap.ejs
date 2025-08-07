@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Upload PDF</title>
+    <link rel="stylesheet" href="/stylesheets/upload.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Upload a PDF</h1>
+        <form action="/rdchap" method="POST">
+
+            <label for="story">Choose a chapter:</label>
+            <input list="stories" id="story" name="chap" placeholder="Select">
+            <datalist id="stories">
+                <% story.chapters.forEach(function(chap){ %>
+                    <option value="<%=chap.title%>">
+                        <%})%>
+            </datalist>
+             <button type="submit">delete PDF</button>
+        </form>
+        <script>
+            const input = document.getElementById("story");
+            const datalist = document.getElementById("stories");
+
+            input.addEventListener("input", () => {
+                const allowed = Array.from(datalist.options).map(opt => opt.value);
+                if (!allowed.includes(input.value)) {
+                    input.setCustomValidity("Please choose from the list");
+                } else {
+                    input.setCustomValidity("");
+                }
+            });
+        </script>
+    </div>
+</body>
+
+</html>

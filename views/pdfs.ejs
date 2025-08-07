@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Story Chapter Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    iframe {
+      width: 100%;
+      height: 90vh;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Display PDF here -->
+   <%storydata.chapters.forEach(function(elem){%>
+  <iframe src="/images/uploads/<%=elem.filename%>"></iframe>
+   <% }) %>
+</body>
+</html>

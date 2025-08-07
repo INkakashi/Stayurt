@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stayurt - Author</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+        
+        .author-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #f0f0f0;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .author-photo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .photo-placeholder {
+            width: 280px;
+            height: 350px;
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("./images/uploads/image.png") center/100% no-repeat;
+        }
+        
+        .photo-text {
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .decorative-elements {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .about-section {
+            padding-left: 1rem;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+
+border-radius: 2px;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            color: #2d3748;
+            line-height: 1.8;
+            white-space: pre-line;
+            background: rgba(102, 126, 234, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            position: relative;
+        }
+        
+        .about-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: #667eea;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.3;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            animation: twinkle 3s infinite;
+        }
+        
+        .star:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .star:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .star:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+        .star:nth-child(4) { bottom: 15%; right: 25%; animation-delay: 0.5s; }
+        .star:nth-child(5) { top: 50%; left: 5%; animation-delay: 1.5s; }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .social-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+            
+            .author-name {
+                font-size: 2.5rem;
+            }
+            
+            .photo-placeholder {
+                width: 220px;
+                height: 280px;
+            }
+            
+            .about-section {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="star">✦</div>
+        <div class="star">✧</div>
+        <div class="star">✦</div>
+        <div class="star">✧</div>
+        <div class="star">✦</div>
+    </div>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="author-name">STAYURT</h1>
+            <p class="tagline">Weaving Tales from the Heart ✨</p>
+        </header>
+        
+        <main class="main-content">
+            <div class="author-photo-section">
+                <div class="photo-placeholder">
+                    <div class="photo-text"></div>
+                </div>
+                <div class="decorative-elements">
+                    <span>📚</span>
+                    <span>✨</span>
+                    <span>🌙</span>
+                    <span>💫</span>
+                </div>
+                <div class="social-links">
+
+<a href="/stories" class="social-btn">📖 Stories</a>
+                    <a href="/contact" class="social-btn">💌 Contact</a>
+                </div>
+            </div>
+            
+            <div class="about-section">
+                <h2 class="section-title">About the Author</h2>
+                <div class="about-text">Hey Starlights ☆~
+
+My being is identified as Ayutta Ballabha Pradhan. A girl in her twenties, finding a way for passion through words.
+
+Briefly, I will be writing and posting my stories, ideas, and perspectives through books. So feel free to explore into my fantasies, my mind, my world. Where you can find a wide range of emotional roller coaster like, love, desire, melancholy, excitement, with some darker feelings too.
+
+I'll be happy to be a part of your daily life.
+
+Love ya~♡
+
+PS- I am a bit explicit about certain stuffs</div>
+            </div>
+        </main>
+    </div>
+<script>(function(){function c(){var b=a.contentDocumenta.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96980942a1d53b79',t:'MTc1NDI0NzM5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechangefunction();document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
